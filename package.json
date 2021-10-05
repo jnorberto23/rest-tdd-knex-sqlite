@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles --forceExit",
     "knex:migrate": "knex --knexfile knexfile.js migrate:latest",
     "knex:migrate:rollback": "knex --knexfile knexfile.js migrate:rollback"
   },

@@ -8,7 +8,9 @@ const router = express.Router();
 router.get("/", HomeControllers.index);
 
 // User routes
+
 router.post("/user", UserControllers.create);
+
 
 
 export default router;

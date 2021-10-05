@@ -5,24 +5,35 @@ class UserControllers {
 
     async create(req, res) {
 
-        const hash = await bcrypt.hash(req.body.password, 10);
+        const user = req.body;
 
-        const user = {
-            name: req.body.name,
-            email: req.body.email,
-            password: hash
+        if (user.name == "" || user.email == "" || user.password == "") {
+            res.statusCode = 400;
+            res.json({ message: "Opa, algo não informado corretamente." });
+            return false;
         }
 
-        const result = await UserModels.create(user);
+        user.password = await bcrypt.hash(user.password, 10);
 
-        if (result.status) {
-            res.json({ message: "Usuario cadastrado com sucesso" });
+        const isEmailRegistered = await UserModels.findEmail(user.email);
+
+        if (isEmailRegistered.status) {
+            res.statusCode = 400;
+            res.json({ message: "Erro: O e-mail já está cadastrado" });
+            return;
+        }
+
+        const userWasRegistered = await UserModels.create(user);
+
+        if (userWasRegistered.status) {
+            res.json({ message: "Usuario cadastrado com sucesso!" });
         } else {
-            res.statusCode = 403;
-            res.json({ message: "Erro ao cadastrar usuario" });
+            res.statusCode = 500;
+            res.json({ message: "Sinto muito, ocorreu um erro interno :(" });
         }
 
     }
+
 }
 
 export default new UserControllers;
