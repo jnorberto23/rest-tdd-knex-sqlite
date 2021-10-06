@@ -4,7 +4,7 @@ class User {
     create = async (user) => {
         try {
             const result = await knex.insert(user).table("users");
-            return { status: true, id: result }
+            return { status: true, id: result[0] }
         } catch (err) {
             console.log(err);
             return { status: false }
@@ -29,9 +29,9 @@ class User {
         }
     }
 
-    findById = async(id) => {
+    findById = async (id) => {
         try {
-            const result = await knex.select(["id", "name", "nationality", "date_created"])
+            const result = await knex.select(["id", "name", "email", "nationality", "date_created"])
                 .table("users")
                 .where({ id: id });
 

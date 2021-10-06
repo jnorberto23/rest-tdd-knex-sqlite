@@ -17,8 +17,9 @@ describe("Criar usuario", () => {
         return request.post("/user")
             .send(mainUser)
             .then((req) => {
+                const { id } = req.body;
                 expect(req.statusCode).toEqual(200);
-                mainUser['id'] = req.body.id;
+                mainUser.id = id;
             }).catch((err) => {
                 throw new Error(err);
             });
@@ -69,9 +70,13 @@ describe("Buscar usuario", () => {
 
     test("Deve retornar os dados do usuario cadastrado atraves do id", async () => {
 
-        return request.get(`/user/${mainUser['id']}`)
+        return request.get(`/user/${mainUser.id}`)
             .then((req) => {
                 expect(req.statusCode).toEqual(200);
+                expect(req.body.result.id).toEqual(mainUser.id);
+                expect(req.body.result.name).toEqual(mainUser.name);
+                expect(req.body.result.email).toEqual(mainUser.email);
+                expect(req.body.result.nationality).toEqual(mainUser.nationality);
             }).catch((err) => {
                 throw new Error(err);
             });
@@ -93,7 +98,7 @@ describe("Apagar usuario", () => {
 
     test("O usuario deve ser apagado com sucesso", async () => {
 
-        return request.delete(`/user/${mainUser['id']}`)
+        return request.delete(`/user/${mainUser.id}`)
             .then((req) => {
                 expect(req.statusCode).toEqual(200);
             }).catch((err) => {
@@ -104,22 +109,7 @@ describe("Apagar usuario", () => {
 
 })
 
-/*
 
-
-describe("Buscar usuario", () => {
-    test("Deve retornar os dados do usuario cadastrado atraves do e-mail", async () => {
-
-        return request.get(`/user/${mainUser.email}`)
-            .then((req) => {
-                expect(req.statusCode).toEqual(200);
-                done();
-            }).catch((err) => {
-                throw new Error(err);
-            });
-    });
-})
-*/
 /*
 test("Os dados do usuario devem ser alterados com sucesso.", async () => {
     const user = {
