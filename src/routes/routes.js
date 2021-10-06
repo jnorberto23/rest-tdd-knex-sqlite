@@ -11,6 +11,8 @@ router.get("/", HomeControllers.index);
 
 router.post("/user", UserControllers.create);
 
+router.get("/user/:id", UserControllers.findById);
 
+//router.delete("/user/:email", UserControllers.deleteById);
 
 export default router;
