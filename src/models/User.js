@@ -46,12 +46,12 @@ class User {
             return { status: false }
         }
     }
-/*
-    delete = async (email) => {
+
+    delete = async (id) => {
         try {
             const result = await knex.delete()
                 .table("users")
-                .where({ email: email });
+                .where({ id: id });
 
             return { status: true }
 
@@ -59,7 +59,7 @@ class User {
             console.log(err);
             return { status: false }
         }
-    }*/
+    }
 
 }
 

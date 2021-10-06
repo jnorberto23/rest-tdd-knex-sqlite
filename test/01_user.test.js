@@ -56,8 +56,8 @@ describe("Criar usuario", () => {
 })
 
 describe("Buscar usuario", () => {
-    
-       test("Deve retornar 404 caso o usuario não seja encontrado", async () => {
+
+    test("Deve retornar 404 caso o usuario não seja encontrado", async () => {
 
         return request.get(`/user/${Date.now()}`)
             .then((req) => {
@@ -77,14 +77,23 @@ describe("Buscar usuario", () => {
             });
     });
 
-
 })
 
-/*
 describe("Apagar usuario", () => {
+    test("Deve retornar 404 caso o usuario não seja encontrado", async () => {
+
+        return request.delete(`/user/${Date.now()}`)
+            .then((req) => {
+                expect(req.statusCode).toEqual(404);
+            }).catch((err) => {
+                throw new Error(err);
+            });
+
+    });
+
     test("O usuario deve ser apagado com sucesso", async () => {
 
-        return request.delete(`/user/${mainUser.id}`)
+        return request.delete(`/user/${mainUser['id']}`)
             .then((req) => {
                 expect(req.statusCode).toEqual(200);
             }).catch((err) => {
@@ -95,7 +104,6 @@ describe("Apagar usuario", () => {
 
 })
 
-*/
 /*
 
 

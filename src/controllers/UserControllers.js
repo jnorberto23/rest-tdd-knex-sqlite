@@ -30,10 +30,12 @@ class UserControllers {
         if (userWasRegistered.status) {
             const { id } = userWasRegistered
             res.json({ message: "Usuario cadastrado com sucesso!", id });
+            return;
 
         } else {
             res.statusCode = 500;
             res.json({ message: "Sinto muito, ocorreu um erro interno :(" });
+            return;
         }
     }
 
@@ -44,9 +46,11 @@ class UserControllers {
 
         if (isEmailRegistered.status) {
             res.send({ result: isEmailRegistered });
+            return;
         } else {
             res.statusCode = 404;
             res.json({ message: "Erro: Nenhum usuário encontrado" });
+            return;
         }
     }
 
@@ -57,39 +61,45 @@ class UserControllers {
         if (id === "" || id === undefined) {
             res.statusCode = 400;
             res.json({ message: "Erro: código de usuário não foi informado" });
+            return;
         }
 
         const isUserRegistered = await UserModels.findById(id);
 
         if (isUserRegistered.status) {
             res.send({ result: isUserRegistered.result });
+            return;
         } else {
             res.statusCode = 404;
             res.json({ message: "Erro: Nenhum usuário encontrado" });
+            return;
         }
     }
 
-    /*
-        async deleteById(req, res) {
-            const email = req.params.id;
-    
-            const isEmailRegistered = await UserModels.findEmail(email);
-    
-            if (isEmailRegistered.status === false) {
-                res.statusCode = 404;
-                res.json({ message: "Erro: Nenhum usuário encontrado" });
-            }
-    
-            const isUserDeleted = await UserModels.delete(email);
-    
-            if (isUserDeleted.status) {
-                res.send({ message: "Usuário apagado com sucesso" });
-            } else {
-                res.statusCode = 500;
-                res.json({ message: "Erro: o usuário nào foi apagado" });
-            }
+    async deleteById(req, res) {
+
+        const id = req.params.id;
+
+        const isUserRegistered = await UserModels.findById(id);
+
+        if (isUserRegistered.status === false) {
+            res.statusCode = 404;
+            res.json({ message: "Erro: Nenhum usuário encontrado" });
+            return;
         }
-        */
+
+        const isUserDeleted = await UserModels.delete(id);
+
+        if (isUserDeleted.status) {
+            res.send({ message: "Usuário apagado com sucesso" });
+            return;
+        } else {
+            res.statusCode = 500;
+            res.json({ message: "Erro: o usuário nào foi apagado" });
+            return;
+        }
+    }
+
 }
 
 export default new UserControllers;

@@ -13,6 +13,6 @@ router.post("/user", UserControllers.create);
 
 router.get("/user/:id", UserControllers.findById);
 
-//router.delete("/user/:email", UserControllers.deleteById);
+router.delete("/user/:id", UserControllers.deleteById);
 
 export default router;
