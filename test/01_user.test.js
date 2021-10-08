@@ -84,6 +84,61 @@ describe("Buscar usuario", () => {
 
 })
 
+describe("Editar usuario", () => {
+
+    test("Deve retornar 404 caso o usuario não seja encontrado", async () => {
+        const user = {
+            id: Date.now(),
+            name: "Juan Hernandes",
+            email: `juan.hernandes${Date.now()}@outlook.com`,
+            nationality: "Chileno",
+        };
+
+        return request.put(`/user`)
+            .send(user)
+            .then((req) => {
+                expect(req.statusCode).toEqual(404);
+            }).catch((err) => {
+                throw new Error(err);
+            });
+    });
+
+    test("Deve impedir que o usuario edite seu perfil com campos vazios", async () => {
+        const user = {
+            id: mainUser.id,
+            name: "",
+            email: "",
+            nationality: "",
+        };
+
+        return request.put(`/user`)
+            .send(user)
+            .then((req) => {
+                expect(req.statusCode).toEqual(400);
+            }).catch((err) => {
+                throw new Error(err);
+            });
+    });
+    
+    test("Os dados do usuario devem ser alterados com sucesso.", async () => {
+        const user = {
+            id: mainUser.id,
+            name: "Juan Hernandes",
+            email: `juan.hernandes${Date.now()}@outlook.com`,
+            nationality: "Chileno",
+        };
+
+        return request.put("/user")
+            .send(user)
+            .then((req) => {
+                expect(req.statusCode).toEqual(200);
+            }).catch((err) => {
+                throw new Error(err);
+            })
+    })
+
+})
+
 describe("Apagar usuario", () => {
     test("Deve retornar 404 caso o usuario não seja encontrado", async () => {
 
@@ -109,20 +164,3 @@ describe("Apagar usuario", () => {
 
 })
 
-
-/*
-test("Os dados do usuario devem ser alterados com sucesso.", async () => {
-    const user = {
-        name: "João Machado",
-        email: "",
-        password: "ourodetolo"
-    };
-
-    return request.put("/user")
-        .send(user)
-        .then((req) => {
-            expect(req.statusCode).toEqual(200);
-        }).catch((err) => {
-            throw new Error(err);
-        })
-})*/

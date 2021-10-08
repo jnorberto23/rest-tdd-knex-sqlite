@@ -1,5 +1,6 @@
 import UserModels from "../models/User.js";
 import bcrypt from "bcrypt";
+import User from "../models/User.js";
 
 class UserControllers {
 
@@ -100,6 +101,39 @@ class UserControllers {
         }
     }
 
+    async edit(req, res) {
+        const user = req.body;
+
+        for (var [key, value] of Object.entries(user)) {
+            if (value === "") {
+                res.statusCode = 400;
+                res.json({ message: `Erro: ${key} não informado` });
+                return false;
+            }
+        }
+
+        const isUserRegistered = await UserModels.findById(user.id);
+
+        if (isUserRegistered.status === false) {
+            res.statusCode = 404;
+            res.json({ message: "Erro: Nenhum usuário encontrado" });
+            return;
+        }
+
+        const isUserChanged = await UserModels.edit(user);
+
+        if (isUserChanged.status) {
+            res.json({ message: "Usuario cadastrado com sucesso!" });
+            return;
+        }
+        else {
+            res.statusCode = 500;
+            res.json({ message: "Sinto muito, ocorreu um erro interno :(" });
+            return;
+        }
+
+    }
+    
 }
 
 export default new UserControllers;

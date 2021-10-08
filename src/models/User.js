@@ -47,6 +47,18 @@ class User {
         }
     }
 
+    edit = async (user) => {
+        try {
+            const result = await knex.update(user)
+            .table("users")
+            .where({id : user.id});
+            return { status: true}
+        } catch (err) {
+            console.log(err);
+            return { status: false }
+        }
+    }
+
     delete = async (id) => {
         try {
             const result = await knex.delete()
