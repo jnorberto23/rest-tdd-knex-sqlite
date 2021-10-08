@@ -1,6 +1,6 @@
 import UserModels from "../models/User.js";
 import bcrypt from "bcrypt";
-import User from "../models/User.js";
+import jwt from "jsonwebtoken";
 
 class UserControllers {
 
@@ -133,7 +133,41 @@ class UserControllers {
         }
 
     }
-    
+
+    async auth(req, res) {
+
+        const { email, password } = req.body;
+
+        const getUserToAutenticate = await UserModels.auth(email);
+
+        if (getUserToAutenticate.status) {
+
+            const isPasswordRight = await bcrypt.compare(password.toString(), getUserToAutenticate.result.password);
+
+            if (isPasswordRight) {
+
+                var token = jwt.sign({
+                    email: getUserToAutenticate.result.email,
+                    id: getUserToAutenticate.result.id
+                }, process.env.JWT_SECRET);
+
+                res.statusCode = 200;
+                res.json({ token });
+                return;
+
+            } else {
+                res.statusCode = 400;
+                res.json({ message: "Erro: A senha está incorreta." });
+                return;
+            }
+        }
+
+        else {
+            res.statusCode = 404;
+            res.json({ message: "Erro: O e-mail não está cadastrado" });
+            return;
+        }
+    }
 }
 
 export default new UserControllers;

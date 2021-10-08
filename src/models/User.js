@@ -46,6 +46,24 @@ class User {
             return { status: false }
         }
     }
+    
+    auth = async (email) => {
+        try {
+            const result = await knex.select(["id", "email", "password"])
+                .table("users")
+                .where({ email: email });
+
+            if (result.length > 0) {
+                return { status: true, result: result[0] };
+            } else {
+                return { status: false };
+            }
+
+        } catch (err) {
+            console.log(err);
+            return { status: false }
+        }
+    }
 
     edit = async (user) => {
         try {

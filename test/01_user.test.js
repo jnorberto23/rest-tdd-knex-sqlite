@@ -1,5 +1,6 @@
 import supertest from "supertest";
 import app from "../src/app.js";
+import jwt from "jsonwebtoken";
 
 const request = supertest(app);
 
@@ -9,7 +10,6 @@ var mainUser = {
     nationality: 'Brasileiro',
     password: 'batatinhafrita123'
 };
-
 
 describe("Criar usuario", () => {
     test("O usuario deve ser cadastrado com sucesso", async () => {
@@ -54,6 +54,57 @@ describe("Criar usuario", () => {
                 throw new Error(err);
             });
     });
+})
+
+describe("Autenticação", () => {
+    test("Deve impedir que um usuario não cadastrado se logue", () => {
+        return request.post("/auth")
+            .send({ email: Date.now(), password: mainUser.password })
+            .then((req) => {
+                expect(req.statusCode).toEqual(404);
+            }).catch((err) => {
+                throw new Error(err);
+            })
+    })
+
+    test("Deve impedir que um usuario cadastrado se logue com uma senha errado", () => {
+        return request.post("/auth")
+            .send({ email: mainUser.email, password: Date.now() })
+            .then((req) => {
+                expect(req.statusCode).toEqual(400);
+            }).catch((err) => {
+                throw new Error(err);
+            })
+    })
+
+    test("O usuario deve se autenticar com sucesso", () => {
+
+        return request.post("/auth")
+            .send({ email: mainUser.email, password: mainUser.password })
+            .then((req) => {
+                expect(req.statusCode).toEqual(200); 
+            }).catch((err) => {
+                throw new Error(err);
+            })
+    })
+
+    test("A autenticação deve gerar um token válido", () => {
+
+        return request.post("/auth")
+            .send({ email: mainUser.email, password: mainUser.password })
+            .then((req) => {
+
+                var validToken = jwt.sign({
+                    email: mainUser.email,
+                    id: mainUser.id
+                }, process.env.JWT_SECRET);
+          
+                expect(req.statusCode).toEqual(200);
+                expect(req.body.token).toEqual(validToken);
+            }).catch((err) => {
+                throw new Error(err);
+            })
+    })    
 })
 
 describe("Buscar usuario", () => {
@@ -119,7 +170,7 @@ describe("Editar usuario", () => {
                 throw new Error(err);
             });
     });
-    
+
     test("Os dados do usuario devem ser alterados com sucesso.", async () => {
         const user = {
             id: mainUser.id,
