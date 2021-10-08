@@ -11,6 +11,8 @@ var mainUser = {
     password: 'batatinhafrita123'
 };
 
+var validToken = "";
+
 describe("Criar usuario", () => {
     test("O usuario deve ser cadastrado com sucesso", async () => {
 
@@ -82,7 +84,7 @@ describe("Autenticação", () => {
         return request.post("/auth")
             .send({ email: mainUser.email, password: mainUser.password })
             .then((req) => {
-                expect(req.statusCode).toEqual(200); 
+                expect(req.statusCode).toEqual(200);
             }).catch((err) => {
                 throw new Error(err);
             })
@@ -94,17 +96,17 @@ describe("Autenticação", () => {
             .send({ email: mainUser.email, password: mainUser.password })
             .then((req) => {
 
-                var validToken = jwt.sign({
+                validToken = jwt.sign({
                     email: mainUser.email,
                     id: mainUser.id
                 }, process.env.JWT_SECRET);
-          
+
                 expect(req.statusCode).toEqual(200);
                 expect(req.body.token).toEqual(validToken);
             }).catch((err) => {
                 throw new Error(err);
             })
-    })    
+    })
 })
 
 describe("Buscar usuario", () => {
@@ -137,7 +139,7 @@ describe("Buscar usuario", () => {
 
 describe("Editar usuario", () => {
 
-    test("Deve retornar 404 caso o usuario não seja encontrado", async () => {
+    test("Deve impedir que o usuario autenticado altere um usuario diferente", async () => {
         const user = {
             id: Date.now(),
             name: "Juan Hernandes",
@@ -146,9 +148,10 @@ describe("Editar usuario", () => {
         };
 
         return request.put(`/user`)
+            .set('authorization', 'bearer ' + validToken)
             .send(user)
             .then((req) => {
-                expect(req.statusCode).toEqual(404);
+                expect(req.statusCode).toEqual(403);
             }).catch((err) => {
                 throw new Error(err);
             });
@@ -163,6 +166,7 @@ describe("Editar usuario", () => {
         };
 
         return request.put(`/user`)
+            .set('authorization', 'bearer ' + validToken)
             .send(user)
             .then((req) => {
                 expect(req.statusCode).toEqual(400);
@@ -180,6 +184,7 @@ describe("Editar usuario", () => {
         };
 
         return request.put("/user")
+            .set('authorization', 'bearer ' + validToken)
             .send(user)
             .then((req) => {
                 expect(req.statusCode).toEqual(200);
@@ -191,11 +196,12 @@ describe("Editar usuario", () => {
 })
 
 describe("Apagar usuario", () => {
-    test("Deve retornar 404 caso o usuario não seja encontrado", async () => {
+    test("Deve impedir que o usuario autenticado apague um usuario diferente", async () => {
 
         return request.delete(`/user/${Date.now()}`)
+            .set('authorization', 'bearer ' + validToken)
             .then((req) => {
-                expect(req.statusCode).toEqual(404);
+                expect(req.statusCode).toEqual(403);
             }).catch((err) => {
                 throw new Error(err);
             });
@@ -205,6 +211,7 @@ describe("Apagar usuario", () => {
     test("O usuario deve ser apagado com sucesso", async () => {
 
         return request.delete(`/user/${mainUser.id}`)
+            .set('authorization', 'bearer ' + validToken)
             .then((req) => {
                 expect(req.statusCode).toEqual(200);
             }).catch((err) => {
