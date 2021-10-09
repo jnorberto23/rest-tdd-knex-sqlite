@@ -1,4 +1,4 @@
-# API de Games
+# API de Usuarios
 CRUD básico para treino de TDD.
 ## Endpoints
 
@@ -7,8 +7,11 @@ Esse endpoint é responsável por inserir um usuario.
 
 #### Parametros
 name: Nome do usuário.
+
 email: E-mail do usuário.
+
 nationality: Nacionalidade do usuário.
+
 password: Senha do usuário.
 
 Exemplo:
