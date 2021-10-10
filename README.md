@@ -12,6 +12,8 @@
 
 [Instalação e uso](#instalação-e-uso)
 
+[Instalação e uso](#regras)
+
 [Endpoints](#endpoints)
 
 [Licença](#licença)
@@ -60,6 +62,38 @@ $ yarn test
 # Rode o servidor
 $ yarn start
 ```
+
+## Regras
+
+- Cadastro de usuário
+
+  [ x ] Não é permitido cadastrar mais de um usuário com o mesmo e-mail
+
+  [ x ] É necessário informar todas os parametros para cadastrar um usuário 
+
+- Autenticação
+
+  [ x ] É necessário informar o email e a password para se autenticar 
+
+  [ x ] Apenas o usuário autenticado pode apagar e editar seus dados.
+
+- Busca de usuário 
+
+  [ x ] Para esta rota, NÃO é necessário passar como headers o token gerado na autenticação.
+
+  [ x ] O usuário autenticado poderá acessar os dados de outros usuarios.
+
+- Alteração dos dados de usuário
+
+  [ x ] Para acessar essa rota, é necessário passar como headers o token gerado na autenticação.
+
+  [ x ] O usuário autenticado pode editar apenas próprios seus dados.
+
+- Remoção de usuario
+
+  [ x ] Para acessar essa rota, é necessário passar como headers o token gerado na autenticação.
+
+  [ x ] O usuário autenticado pode apagar apenas próprios seus dados.
 
 ## Endpoints
 
