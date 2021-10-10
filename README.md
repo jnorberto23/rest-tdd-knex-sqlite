@@ -1,6 +1,4 @@
-# API de Usuarios
-
-<br>
+<h1 align="center">rest-tdd-knex-sqlite</h1>
 
 <p align="center">
   <img src=".github/banner.png" alt="Página inicial">
@@ -20,13 +18,13 @@
 
 <br>
   
-## Sobre
+## 💻 Sobre
 
 Um crud básico, feito com o intuito de praticar TDD nos endpoints.
 
 <br>
 
-## Tecnologias
+## ✨ Tecnologias
 
 As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 
@@ -40,7 +38,7 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 - [JWT](https://jwt.io/)
 
 
-## Instalação e uso
+## 🚀 Instalação e uso
 
 
 ```bash
@@ -498,7 +496,7 @@ Exemplo de resposta:
 
 <br>
 
-## Licença
+## 📄 Licença
 
 <a href="https://opensource.org/licenses/MIT">
     <img alt="License" src="https://img.shields.io/badge/license-MIT-04D361?style=flat-square">
@@ -506,7 +504,7 @@ Exemplo de resposta:
 
 <br>
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](/LICENSE) para mais detalhes.
+Esse projeto está sob a licença MIT.
 
 ---
 
