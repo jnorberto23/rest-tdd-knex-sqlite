@@ -38,7 +38,6 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 
 ## 🚀 Instalação e uso
 
-
 ```bash
 # Abra um terminal e copie este repositório com o comando
 $ git clone https://github.com/jnorberto23/rest-tdd-knex-sqlite.git
@@ -62,14 +61,10 @@ $ yarn test
 $ yarn start
 ```
 
-
 ## Endpoints
-
-  
 
 ### POST /user
 
-  
 
 Esse endpoint é responsável por inserir um usuario.
 
