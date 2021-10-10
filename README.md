@@ -16,13 +16,11 @@
 
 [Licença](#licença)
 
-<br>
   
 ## 💻 Sobre
 
-Um crud básico, feito com o intuito de praticar TDD nos endpoints.
+Um crud básico feito em API REST com express, Node.js e SQLite, com o intuito de praticar os princípios de TDD nos endpoints.
 
-<br>
 
 ## ✨ Tecnologias
 
