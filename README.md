@@ -1,5 +1,11 @@
 # API de Usuarios
 
+<br>
+
+<p align="center">
+  <img src=".github/banner.png" alt="Página inicial">
+</p>
+
 ## Tópicos 
 
 [Sobre](#sobre)
