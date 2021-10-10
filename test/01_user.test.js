@@ -151,7 +151,7 @@ describe("Editar usuario", () => {
             .set('authorization', 'bearer ' + validToken)
             .send(user)
             .then((req) => {
-                expect(req.statusCode).toEqual(403);
+                expect(req.statusCode).toEqual(401);
             }).catch((err) => {
                 throw new Error(err);
             });
@@ -201,7 +201,7 @@ describe("Apagar usuario", () => {
         return request.delete(`/user/${Date.now()}`)
             .set('authorization', 'bearer ' + validToken)
             .then((req) => {
-                expect(req.statusCode).toEqual(403);
+                expect(req.statusCode).toEqual(401);
             }).catch((err) => {
                 throw new Error(err);
             });

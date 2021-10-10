@@ -123,7 +123,7 @@ class UserControllers {
         const isUserChanged = await UserModels.edit(user);
 
         if (isUserChanged.status) {
-            res.json({ message: "Usuario cadastrado com sucesso!" });
+            res.json({ message: "Dados do usuario alterado com sucesso!" });
             return;
         }
         else {
