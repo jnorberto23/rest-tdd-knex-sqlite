@@ -1,10 +1,39 @@
 # API de Usuarios
 
-  
+## Tópicos 
 
-CRUD básico para treino de TDD.
+[Sobre](#sobre)
 
+[Tecnologias](#tecnologias)
+
+[Instalação e uso](#instalação-e-uso)
+
+[Endpoints](#endpoints)
+
+[Licença](#licença)
+
+<br>
   
+## Sobre
+
+Um crud básico, feito com o intuito de praticar TDD nos endpoints.
+
+<br>
+
+## Tecnologias
+
+As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
+
+- [JavaScript](https://www.javascript.com/)
+- [Node](https://nodejs.org/en/)
+- [Express](https://expressjs.com/)
+- [SQLite3](https://www.sqlite.org/index.html)
+- [Knex](http://knexjs.org/)
+- [Jest](https://jestjs.io/pt-BR/)
+- [Supertest](https://www.npmjs.com/package/supertest)
+- [JWT](https://jwt.io/)
+
+
 ## Instalação e uso
 
 
@@ -13,15 +42,15 @@ CRUD básico para treino de TDD.
 $ git clone https://github.com/jnorberto23/rest-tdd-knex-sqlite.git
 # ou use a opção de download.
 
-# Entre na pasta server 
+# Entre na pasta  
 $ cd rest-tdd-knex-sqlite
 
 # Instale as dependências
 $ yarn install
 
-# Execute as migrations do SQLite (Iniciar o banco de dados)
+# Execute as migrations do SQLite 
 $ yarn knex:migrate 
-# Execute o rollback das migrations do SQLite (Apagar o banco de dados)
+# Execute o rollback das migrations do SQLite
 $ yarn knex:migrate:rollback 
 
 # Execute os testes dos endpoints com o Jest
@@ -460,3 +489,19 @@ Exemplo de resposta:
 "error": "Token com autorização inválida"
 }
 ```
+
+<br>
+
+## Licença
+
+<a href="https://opensource.org/licenses/MIT">
+    <img alt="License" src="https://img.shields.io/badge/license-MIT-04D361?style=flat-square">
+</a>
+
+<br>
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](/LICENSE) para mais detalhes.
+
+---
+
+by [João Norberto](https://github.com/jnorberto23)
