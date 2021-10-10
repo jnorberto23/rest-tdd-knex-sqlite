@@ -5,6 +5,32 @@
 CRUD básico para treino de TDD.
 
   
+## Instalação e uso
+
+
+```bash
+# Abra um terminal e copie este repositório com o comando
+$ git clone https://github.com/jnorberto23/rest-tdd-knex-sqlite.git
+# ou use a opção de download.
+
+# Entre na pasta server 
+$ cd rest-tdd-knex-sqlite
+
+# Instale as dependências
+$ yarn install
+
+# Execute as migrations do SQLite (Iniciar o banco de dados)
+$ yarn knex:migrate 
+# Execute o rollback das migrations do SQLite (Apagar o banco de dados)
+$ yarn knex:migrate:rollback 
+
+# Execute os testes dos endpoints com o Jest
+$ yarn test
+
+# Rode o servidor
+$ yarn start
+```
+
 
 ## Endpoints
 
