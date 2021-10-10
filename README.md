@@ -17,12 +17,12 @@
 [Licença](#licença)
 
   
-## 💻 Sobre
+## Sobre
 
 Um crud básico feito em API REST com express, Node.js e SQLite, com o intuito de praticar os princípios de TDD nos endpoints.
 
 
-## ✨ Tecnologias
+## Tecnologias
 
 As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 
@@ -36,7 +36,7 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 - [JWT](https://jwt.io/)
 
 
-## 🚀 Instalação e uso
+## Instalação e uso
 
 ```bash
 # Abra um terminal e copie este repositório com o comando
@@ -489,7 +489,7 @@ Exemplo de resposta:
 
 <br>
 
-## 📄 Licença
+## Licença
 
 <a href="https://opensource.org/licenses/MIT">
     <img alt="License" src="https://img.shields.io/badge/license-MIT-04D361?style=flat-square">
