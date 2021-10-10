@@ -12,7 +12,7 @@
 
 - [Instalação e uso](#instalação-e-uso)
 
-- [Instalação e uso](#regras)
+- [Regras](#regras)
 
 - [Endpoints](#endpoints)
 
