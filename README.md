@@ -6,17 +6,17 @@
 
 ## Tópicos 
 
-[Sobre](#sobre)
+- [Sobre](#sobre)
 
-[Tecnologias](#tecnologias)
+- [Tecnologias](#tecnologias)
 
-[Instalação e uso](#instalação-e-uso)
+- [Instalação e uso](#instalação-e-uso)
 
-[Instalação e uso](#regras)
+- [Instalação e uso](#regras)
 
-[Endpoints](#endpoints)
+- [Endpoints](#endpoints)
 
-[Licença](#licença)
+- [Licença](#licença)
 
   
 ## Sobre
