@@ -1,4 +1,3 @@
-
 # API de Usuarios
 
   
@@ -93,7 +92,7 @@ Exemplo de resposta:
 
 ```
 {
-"message": "Erro: O e-mail já está cadastrado"
+"error": "O e-mail já está cadastrado"
 }
 ```
 
@@ -169,7 +168,7 @@ Exemplo de resposta:
 
 ```
 {
-"message": "Erro: O e-mail não está cadastrado"
+"error": "O e-mail não está cadastrado"
 }
 ```
 
@@ -189,7 +188,7 @@ Exemplo de resposta:
 
 ```
 {
-"message": "Erro: A senha está incorreta."
+"error": "A senha está incorreta."
 }
 ```
 
@@ -254,7 +253,7 @@ Exemplo de resposta:
 
 ```
 {
-"message": "Erro: Nenhum usuário encontrado"
+"error": "Nenhum usuário encontrado"
 }
 ```
 
@@ -332,7 +331,7 @@ Exemplo de resposta:
 
 ```
 {
-"message": "Erro: Token inválido ou não informado"
+"error": "Token inválido ou não informado"
 }
 ```
 
@@ -352,7 +351,7 @@ Exemplo de resposta:
 
 ```
 {
-"message": "Erro: Token com autorização inválida"
+"error": "Token com autorização inválida"
 }
 ```
 
@@ -412,7 +411,7 @@ Exemplo de resposta:
 
 ```
 {
-"message": "Erro: Token inválido ou não informado"
+"error": "Token inválido ou não informado"
 }
 ```
 
@@ -432,6 +431,6 @@ Exemplo de resposta:
 
 ```
 {
-"message": "Erro: Token com autorização inválida"
+"error": "Token com autorização inválida"
 }
 ```

@@ -18,12 +18,12 @@ export default (req, res, next) => {
            
             } else {  
                 res.status(401);
-                res.json({message : "Erro: Token com autorização inválida"});
+                res.json({error : "Token com autorização inválida"});
                 return;
             }
         } catch {
             res.status(400);
-            res.json({message : "Erro: Token inválido ou não informado"});
+            res.json({error : "Token inválido ou não informado"});
             return;
         }
     }

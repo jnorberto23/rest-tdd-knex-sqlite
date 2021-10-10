@@ -22,7 +22,7 @@ class UserControllers {
 
         if (isEmailRegistered.status) {
             res.statusCode = 400;
-            res.json({ message: "Erro: O e-mail já está cadastrado" });
+            res.json({ error: "O e-mail já está cadastrado" });
             return;
         }
 
@@ -35,7 +35,7 @@ class UserControllers {
 
         } else {
             res.statusCode = 500;
-            res.json({ message: "Sinto muito, ocorreu um erro interno :(" });
+            res.json({ error: "Sinto muito, ocorreu um erro interno :(" });
             return;
         }
     }
@@ -50,7 +50,7 @@ class UserControllers {
             return;
         } else {
             res.statusCode = 404;
-            res.json({ message: "Erro: Nenhum usuário encontrado" });
+            res.json({ error: "Nenhum usuário encontrado" });
             return;
         }
     }
@@ -61,7 +61,7 @@ class UserControllers {
 
         if (id === "" || id === undefined) {
             res.statusCode = 400;
-            res.json({ message: "Erro: código de usuário não foi informado" });
+            res.json({ error: "O Código de usuário não foi informado" });
             return;
         }
 
@@ -72,7 +72,7 @@ class UserControllers {
             return;
         } else {
             res.statusCode = 404;
-            res.json({ message: "Erro: Nenhum usuário encontrado" });
+            res.json({ error: "Nenhum usuário encontrado" });
             return;
         }
     }
@@ -85,7 +85,7 @@ class UserControllers {
 
         if (isUserRegistered.status === false) {
             res.statusCode = 404;
-            res.json({ message: "Erro: Nenhum usuário encontrado" });
+            res.json({ error: "Nenhum usuário encontrado" });
             return;
         }
 
@@ -96,7 +96,7 @@ class UserControllers {
             return;
         } else {
             res.statusCode = 500;
-            res.json({ message: "Erro: o usuário nào foi apagado" });
+            res.json({ error: "Erro interno. O usuário nào foi apagado." });
             return;
         }
     }
@@ -107,7 +107,7 @@ class UserControllers {
         for (var [key, value] of Object.entries(user)) {
             if (value === "") {
                 res.statusCode = 400;
-                res.json({ message: `Erro: ${key} não informado` });
+                res.json({ error: `${key} não informado` });
                 return false;
             }
         }
@@ -116,7 +116,7 @@ class UserControllers {
 
         if (isUserRegistered.status === false) {
             res.statusCode = 404;
-            res.json({ message: "Erro: Nenhum usuário encontrado" });
+            res.json({ error: "Nenhum usuário encontrado" });
             return;
         }
 
@@ -128,7 +128,7 @@ class UserControllers {
         }
         else {
             res.statusCode = 500;
-            res.json({ message: "Sinto muito, ocorreu um erro interno :(" });
+            res.json({ error: "Sinto muito, ocorreu um erro interno :(" });
             return;
         }
 
@@ -157,14 +157,14 @@ class UserControllers {
 
             } else {
                 res.statusCode = 400;
-                res.json({ message: "Erro: A senha está incorreta." });
+                res.json({ error: "A senha está incorreta." });
                 return;
             }
         }
 
         else {
             res.statusCode = 404;
-            res.json({ message: "Erro: O e-mail não está cadastrado" });
+            res.json({ error: "O e-mail não está cadastrado" });
             return;
         }
     }
