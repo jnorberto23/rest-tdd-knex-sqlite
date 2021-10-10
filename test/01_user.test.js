@@ -59,7 +59,7 @@ describe("Criar usuario", () => {
 })
 
 describe("Autenticação", () => {
-    test("Deve impedir que um usuario não cadastrado se logue", () => {
+    test("Deve impedir que um usuario não cadastrado façà a autenticação", () => {
         return request.post("/auth")
             .send({ email: Date.now(), password: mainUser.password })
             .then((req) => {
@@ -69,7 +69,7 @@ describe("Autenticação", () => {
             })
     })
 
-    test("Deve impedir que um usuario cadastrado se logue com uma senha errado", () => {
+    test("Deve impedir que um usuario cadastrado faça a autenticação com uma senha errado", () => {
         return request.post("/auth")
             .send({ email: mainUser.email, password: Date.now() })
             .then((req) => {
