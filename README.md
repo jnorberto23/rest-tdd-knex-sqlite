@@ -87,13 +87,13 @@ $ yarn start
 
   [ x ] Para acessar essa rota, é necessário passar como headers o token gerado na autenticação.
 
-  [ x ] O usuário autenticado pode editar apenas próprios seus dados.
+  [ x ] O usuário autenticado pode editar apenas seus próprios  dados.
 
 - Remoção de usuario
 
   [ x ] Para acessar essa rota, é necessário passar como headers o token gerado na autenticação.
 
-  [ x ] O usuário autenticado pode apagar apenas próprios seus dados.
+  [ x ] O usuário autenticado pode apagar apenas seus próprios dados.
 
 ## Endpoints
 
